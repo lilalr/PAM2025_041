@@ -24,11 +24,9 @@ data class UIStateAktivitas(
     val isEntryValid: Boolean = false
 )
 
-// Fungsi Validasi agar ViewModel tidak merah
 fun DetailAktivitas.validasi(): Boolean {
     return tipeAktivitas.isNotBlank() && tanggalAktivitas.isNotBlank()
 }
-
 // Fungsi Konversi dari API ke UI
 fun Aktivitas.toDetailAktivitas(): DetailAktivitas = DetailAktivitas(
     aktivitasId = aktivitasId,
