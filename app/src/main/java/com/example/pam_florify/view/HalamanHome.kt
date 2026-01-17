@@ -46,7 +46,6 @@ fun HalamanHome(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
-    // ✅ State untuk dialog konfirmasi
     var showLogoutDialog by remember { mutableStateOf(false) }
     var showDeleteDialog by remember { mutableStateOf(false) }
     var tanamanToDelete by remember { mutableStateOf<Int?>(null) }
@@ -66,7 +65,6 @@ fun HalamanHome(
         }
     }
 
-    // ✅ Dialog Konfirmasi Logout
     if (showLogoutDialog) {
         AlertDialog(
             onDismissRequest = { showLogoutDialog = false },
@@ -108,7 +106,6 @@ fun HalamanHome(
         )
     }
 
-    // ✅ Dialog Konfirmasi Hapus Tanaman
     if (showDeleteDialog && tanamanToDelete != null) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },
@@ -209,7 +206,7 @@ fun HalamanHome(
                             color = GreenDark
                         )
                     }
-                    // ✅ Ubah onClick untuk munculin dialog
+
                     IconButton(onClick = { showLogoutDialog = true }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.Logout,
@@ -299,7 +296,6 @@ fun HalamanHome(
                                     tanaman = item,
                                     onDetailClick = { onDetailClick(item.tanamanId) },
                                     onEditClick = { navigateToEditItem(item.tanamanId) },
-                                    // ✅ Ubah untuk munculin dialog
                                     onDeleteClick = {
                                         tanamanToDelete = item.tanamanId
                                         showDeleteDialog = true
