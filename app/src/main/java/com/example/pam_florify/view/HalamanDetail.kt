@@ -56,7 +56,6 @@ fun HalamanDetail(
     var menuExpanded by remember { mutableStateOf(false) }
     var showDeleteTanamanDialog by remember { mutableStateOf(false) }
 
-    // --- STATE LAINNYA ---
     var expandedDropdown by remember { mutableStateOf(false) }
     val opsiAktivitas = listOf("Penyiraman", "Pemupukan", "Pemangkasan", "Repotting")
     var showDatePicker by remember { mutableStateOf(false) }
@@ -65,25 +64,31 @@ fun HalamanDetail(
     var showDeleteAktivitasDialog by remember { mutableStateOf(false) }
     var selectedAktivitasId by remember { mutableIntStateOf(0) }
 
-    // --- DIALOG HAPUS TANAMAN ---
     if (showDeleteTanamanDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteTanamanDialog = false },
-            title = { Text("Hapus Tanaman") },
-            text = { Text("Apakah Anda yakin ingin menghapus '${uiState.detailTanaman.nama}'? Data ini tidak bisa dikembalikan.") },
+            title = { Text(
+                "Hapus Tanaman") },
+            text = { Text(
+                "Apakah Anda yakin ingin menghapus '${uiState.detailTanaman.nama}'? Data ini tidak bisa dikembalikan.") },
             confirmButton = {
-                TextButton(onClick = {
-                    viewModel.hapusTanaman() // Pastikan fungsi ini ada di ViewModel
+                TextButton(
+                    onClick = {
+                    viewModel.hapusTanaman()
                     showDeleteTanamanDialog = false
-                }) { Text("Hapus", color = Color.Red) }
+                }) { Text(
+                    "Hapus", color = Color.Red) }
             },
             dismissButton = {
-                TextButton(onClick = { showDeleteTanamanDialog = false }) { Text("Batal") }
+                TextButton(
+                    onClick = {
+                    showDeleteTanamanDialog = false }) {
+                    Text(
+                    "Batal") }
             }
         )
     }
 
-    // --- LOGIKA DATE PICKER ---
     if (showDatePicker) {
         DatePickerDialog(
             onDismissRequest = { showDatePicker = false },
@@ -101,19 +106,27 @@ fun HalamanDetail(
         ) { DatePicker(state = datePickerState) }
     }
 
-    // --- DIALOG HAPUS AKTIVITAS ---
     if (showDeleteAktivitasDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteAktivitasDialog = false },
-            title = { Text("Hapus Aktivitas") },
-            text = { Text("Hapus catatan aktivitas ini?") },
+            title = {
+                Text(
+                    "Hapus Aktivitas") },
+            text = {
+                Text(
+                    "Hapus catatan aktivitas ini?") },
             confirmButton = {
                 TextButton(onClick = {
                     viewModel.hapusAktivitas(selectedAktivitasId)
                     showDeleteAktivitasDialog = false
-                }) { Text("Hapus", color = Color.Red) }
+                }) { Text(
+                    "Hapus", color = Color.Red) }
             },
-            dismissButton = { TextButton(onClick = { showDeleteAktivitasDialog = false }) { Text("Batal") } }
+            dismissButton = {
+                TextButton(
+                    onClick = { showDeleteAktivitasDialog = false }) {
+                    Text(
+                        "Batal") } }
         )
     }
 
@@ -128,11 +141,15 @@ fun HalamanDetail(
                     .background(color = GreenLight, shape = RoundedCornerShape(bottomStart = 35.dp, bottomEnd = 35.dp))
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth().statusBarsPadding().padding(horizontal = 8.dp, vertical = 8.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .statusBarsPadding()
+                        .padding(horizontal = 8.dp, vertical = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     IconButton(onClick = navigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = GreenDark)
+                        Icon(
+                            Icons.Default.ArrowBack, contentDescription = "Back", tint = GreenDark)
                     }
                     Text(
                         text = "Detail Tanaman",
@@ -142,30 +159,39 @@ fun HalamanDetail(
                         modifier = Modifier.weight(1f).padding(start = 8.dp)
                     )
 
-                    // MENU TITIK TIGA DI HEADER
                     Box {
-                        IconButton(onClick = { menuExpanded = true }) {
-                            Icon(Icons.Default.MoreVert, contentDescription = "Menu", tint = GreenDark)
+                        IconButton(
+                            onClick = { menuExpanded = true }) {
+                            Icon(
+                                Icons.Default.MoreVert, contentDescription = "Menu", tint = GreenDark)
                         }
                         DropdownMenu(
                             expanded = menuExpanded,
                             onDismissRequest = { menuExpanded = false }
                         ) {
                             DropdownMenuItem(
-                                text = { Text("Edit Tanaman") },
+                                text = {
+                                    Text(
+                                        "Edit Tanaman") },
                                 onClick = {
                                     menuExpanded = false
                                     navigateToEditItem(uiState.detailTanaman.tanamanId)
                                 },
-                                leadingIcon = { Icon(Icons.Default.Edit, contentDescription = null) }
+                                leadingIcon = {
+                                    Icon(
+                                        Icons.Default.Edit, contentDescription = null) }
                             )
                             DropdownMenuItem(
-                                text = { Text("Hapus Tanaman", color = Color.Red) },
+                                text = {
+                                    Text(
+                                        "Hapus Tanaman", color = Color.Red) },
                                 onClick = {
                                     menuExpanded = false
                                     showDeleteTanamanDialog = true
                                 },
-                                leadingIcon = { Icon(Icons.Default.Delete, contentDescription = null, tint = Color.Red) }
+                                leadingIcon = {
+                                    Icon(
+                                        Icons.Default.Delete, contentDescription = null, tint = Color.Red) }
                             )
                         }
                     }
@@ -175,40 +201,52 @@ fun HalamanDetail(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = GreenDark,
-                    modifier = Modifier.align(Alignment.BottomStart).padding(start = 24.dp, bottom = 12.dp)
+                    modifier = Modifier.align(Alignment.BottomStart)
+                        .padding(start = 24.dp, bottom = 12.dp)
                 )
             }
         }
     ) { innerPadding ->
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(innerPadding).padding(horizontal = 24.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .padding(horizontal = 24.dp)
         ) {
             item {
                 Spacer(modifier = Modifier.height(24.dp))
                 Card(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
+                    Column(modifier = Modifier
+                        .padding(16.dp)) {
                         AsyncImage(
                             model = uiState.detailTanaman.foto,
                             contentDescription = null,
-                            modifier = Modifier.fillMaxWidth().height(200.dp).background(Color(0xFFF0F0F0), RoundedCornerShape(12.dp)),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(200.dp)
+                                .background(Color(0xFFF0F0F0), RoundedCornerShape(12.dp)),
                             contentScale = ContentScale.Crop
                         )
-                        Spacer(modifier = Modifier.height(12.dp))
+                        Spacer(modifier = Modifier
+                            .height(12.dp))
                         Surface(color = GreenDark, shape = RoundedCornerShape(50)) {
                             Text(
                                 text = "ID Kategori: ${uiState.detailTanaman.kategoriId}",
                                 color = Color.White, fontSize = 11.sp,
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 4.dp)
+                                modifier = Modifier
+                                    .padding(horizontal = 12.dp, vertical = 4.dp)
                             )
                         }
                         Text(text = uiState.detailTanaman.nama, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = GreenDark)
                     }
                 }
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier
+                    .height(24.dp))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
