@@ -13,7 +13,6 @@ data class Tanaman(
     val userId: Int = 0
 )
 
-// UI States dan Fungsi Konversi
 data class DetailTanaman(
     val tanamanId: Int = 0,
     val nama: String = "",
@@ -49,7 +48,6 @@ fun DetailTanaman.toTanaman(): Tanaman = Tanaman(
     foto
 )
 
-// TAMBAHKAN INI - FUNGSI YANG HILANG
 fun Tanaman.toUIStateTanaman(isEntryValid: Boolean = false): UIStateTanaman = UIStateTanaman(
     detailTanaman = this.toDetailTanaman(),
     isEntryValid = isEntryValid
