@@ -29,7 +29,7 @@ fun FlorifyTopAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back" // Tambahkan di strings.xml: <string name="back">Kembali</string>
+                        contentDescription = "Back"
                     )
                 }
             }
