@@ -29,7 +29,7 @@ interface TanamanApiService {
     @DELETE("tanaman/{id}")
     suspend fun deleteTanaman(@Path("id") id: Int): Response<ResponseBody>
 
-    // --- AKTIVITAS ---
+    // BAGIAN AKTIVITAS ---
     @GET("tanaman/{id}/aktivitas")
     suspend fun getAktivitasByTanaman(@Path("id") id: Int): List<Aktivitas>
 
