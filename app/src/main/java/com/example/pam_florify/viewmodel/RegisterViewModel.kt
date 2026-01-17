@@ -14,7 +14,6 @@ class RegisterViewModel(private val repositoryUser: RepositoryUser) : ViewModel(
     var email by mutableStateOf("")
     var password by mutableStateOf("")
 
-    // State untuk notifikasi snackbar
     var snackbarMessage by mutableStateOf<String?>(null)
         private set
 
@@ -22,8 +21,7 @@ class RegisterViewModel(private val repositoryUser: RepositoryUser) : ViewModel(
         snackbarMessage = null
     }
 
-    // Di dalam class RegisterViewModel
-    fun register() { // Hapus (onRegisterSuccess: () -> Unit)
+    fun register() {
         if (username.isBlank() || email.isBlank() || password.isBlank()) {
             snackbarMessage = "Semua kolom harus diisi!"
             return
