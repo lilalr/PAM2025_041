@@ -105,8 +105,6 @@ fun HalamanEntry(
     }
 }
 
-// EntryTanamanBody dan FormInputTanaman tetap sama seperti sebelumnya...
-
 @Composable
 fun EntryTanamanBody(
     uiStateTanaman: UIStateTanaman,
@@ -172,7 +170,6 @@ fun EntryTanamanBody(
                     }
                 }
 
-                // --- FORM INPUT ---
                 FormInputTanaman(
                     detailTanaman = uiStateTanaman.detailTanaman,
                     onValueChange = onTanamanValueChange,
@@ -181,7 +178,6 @@ fun EntryTanamanBody(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // --- TOMBOL AKSI ---
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
