@@ -51,14 +51,12 @@ fun HalamanRegister(
         }
     }
 
-    // ✅ GUNAKAN BOX WRAPPER
     Box(modifier = Modifier.fillMaxSize().background(GreenDark)) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(GreenLight)
         ) {
-            // --- HEADER LOGO ---
             Column(
                 modifier = Modifier.fillMaxWidth().weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -92,7 +90,6 @@ fun HalamanRegister(
                 )
             }
 
-            // --- FORM REGISTRASI ---
             Surface(
                 modifier = Modifier.fillMaxWidth().weight(2.5f),
                 color = GreenDark,
@@ -111,7 +108,6 @@ fun HalamanRegister(
                     Text("Welcome!", color = Color.White.copy(alpha = 0.7f))
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    // FIELD 1: USERNAME
                     OutlinedTextField(
                         value = viewModel.username,
                         onValueChange = { viewModel.username = it },
@@ -133,7 +129,6 @@ fun HalamanRegister(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // FIELD 2: EMAIL
                     OutlinedTextField(
                         value = viewModel.email,
                         onValueChange = { viewModel.email = it },
@@ -155,7 +150,6 @@ fun HalamanRegister(
 
                     Spacer(modifier = Modifier.height(12.dp))
 
-                    // FIELD 3: PASSWORD
                     OutlinedTextField(
                         value = viewModel.password,
                         onValueChange = { viewModel.password = it },
@@ -212,7 +206,6 @@ fun HalamanRegister(
             }
         }
 
-        // ✅ SNACKBAR DI ATAS DENGAN BOX
         Box(
             modifier = Modifier
                 .fillMaxWidth()
