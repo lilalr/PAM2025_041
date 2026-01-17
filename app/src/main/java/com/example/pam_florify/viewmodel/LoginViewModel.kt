@@ -14,15 +14,13 @@ class LoginViewModel(private val repositoryUser: RepositoryUser) : ViewModel() {
     var email by mutableStateOf("")
     var password by mutableStateOf("")
     var loginStatus by mutableStateOf("")
-        private set  // ✅ Pastikan hanya ViewModel yang bisa ubah status
+        private set
 
     var loggedInUser by mutableStateOf<User?>(null)
-        private set  // ✅ Pastikan hanya ViewModel yang bisa ubah user
+        private set
 
     fun loginAction() {
-        // Reset state sebelum login baru
         loggedInUser = null
-
         if (email.isBlank() || password.isBlank()) {
             loginStatus = "Email dan Password harus diisi"
             return
@@ -31,14 +29,10 @@ class LoginViewModel(private val repositoryUser: RepositoryUser) : ViewModel() {
         viewModelScope.launch {
             try {
                 Log.d("LoginViewModel", "Attempting login for: $email")
-
                 val loginData = mapOf("email" to email, "password" to password)
                 val response = repositoryUser.login(loginData)
-
                 if (response != null) {
                     Log.d("LoginViewModel", "Login successful: ${response.username}")
-
-                    // ✅ Set user DULU, baru status
                     loggedInUser = response
                     loginStatus = "Login Berhasil!"
 
@@ -56,6 +50,5 @@ class LoginViewModel(private val repositoryUser: RepositoryUser) : ViewModel() {
 
     fun resetStatus() {
         loginStatus = ""
-        // ✅ JANGAN reset loggedInUser di sini, biarkan tetap ada sampai navigasi selesai
     }
 }
