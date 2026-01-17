@@ -23,7 +23,7 @@ class EntryViewModel(private val repositoryTanaman: RepositoryTanaman) : ViewMod
     fun updateUiState(detailTanaman: DetailTanaman) {
         uiStateTanaman = UIStateTanaman(
             detailTanaman = detailTanaman,
-            isEntryValid = detailTanaman.validasi() // Menggunakan fungsi validasi dari model
+            isEntryValid = detailTanaman.validasi()
         )
     }
 
@@ -34,13 +34,11 @@ class EntryViewModel(private val repositoryTanaman: RepositoryTanaman) : ViewMod
     fun addTanaman(userId: Int) {
         viewModelScope.launch {
             try {
-                // Konversi DetailTanaman ke Tanaman dan pasang userId
                 val tanaman = uiStateTanaman.detailTanaman.toTanaman().copy(userId = userId)
 
                 repositoryTanaman.insertTanaman(tanaman)
                 isSaveCompleted = true
             } catch (e: Exception) {
-                // Handle error if needed, maybe show a snackbar
                 e.printStackTrace()
             }
         }
