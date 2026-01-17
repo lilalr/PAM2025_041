@@ -16,8 +16,6 @@ interface AppContainer {
 }
 
 class ContainerApp : AppContainer {
-    // Untuk emulator gunakan 10.0.2.2
-    // Untuk device fisik gunakan IP komputer (misal: 192.168.x.x)
     private val baseUrl = "http://10.0.2.2:3000/"
 
     private val json = Json { ignoreUnknownKeys = true }
@@ -48,7 +46,6 @@ class AplikasiFlorify : Application() {
     }
 }
 
-// TAMBAHKAN FUNGSI INI - YANG TADI KEHAPUS
 @Composable
 fun FlorifyApp(modifier: Modifier = Modifier) {
     PetaNavigasi()
