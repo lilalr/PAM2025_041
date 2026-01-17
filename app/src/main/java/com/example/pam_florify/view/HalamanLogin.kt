@@ -58,14 +58,12 @@ fun HalamanLogin(
         }
     }
 
-    // ✅ Gunakan Box untuk kontrol layout
     Box(modifier = Modifier.fillMaxSize().background(GreenDark)) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(GreenLight)
         ) {
-            // Logo section
             Column(
                 modifier = Modifier.fillMaxWidth().weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -93,10 +91,10 @@ fun HalamanLogin(
                     color = Color.White,
                     fontWeight = FontWeight.Bold
                 )
-                Text(text = "Nurture Your Plants, Nurture Life", color = Color.White)
+                Text(
+                    text = "Nurture Your Plants, Nurture Life", color = Color.White)
             }
 
-            // Form section
             Surface(
                 modifier = Modifier.fillMaxSize().weight(2f),
                 color = GreenDark,
@@ -192,18 +190,18 @@ fun HalamanLogin(
                     Spacer(modifier = Modifier.height(8.dp))
 
                     TextButton(onClick = onRegisterClick) {
-                        Text("Belum punya akun? Daftar!", color = Color.White)
+                        Text(
+                            "Belum punya akun? Daftar!", color = Color.White)
                     }
                 }
             }
         }
 
-        // ✅ SNACKBAR DI ATAS DENGAN BOX
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.TopCenter)
-                .statusBarsPadding() // Hindari status bar
+                .statusBarsPadding()
                 .padding(top = 16.dp, start = 16.dp, end = 16.dp)
         ) {
             SnackbarHost(hostState = snackbarHostState) { data ->
