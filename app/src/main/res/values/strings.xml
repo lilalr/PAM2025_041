@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Florify</string>
+
+    <string name="title_dashboard">Tanaman Saya</string>
+    <string name="title_tambah_tanaman">Tambah Tanaman</string>
+    <string name="title_detail_tanaman">Detail Tanaman</string>
+    <string name="title_edit_tanaman">Edit Tanaman</string>
+
+    <string name="hint_nama_tanaman">Nama Tanaman</string>
+    <string name="hint_deskripsi">Deskripsi Tanaman</string>
+    <string name="hint_kategori">Kategori</string>
+    <string name="required_field">* Wajib diisi</string>
+
+    <string name="label_aktivitas_perawatan">Riwayat Perawatan</string>
+    <string name="hint_jenis_aktivitas">Jenis Aktivitas (Cth: Siram)</string>
+    <string name="hint_tanggal">Tanggal Aktivitas</string>
+    <string name="hint_catatan">Catatan/Notes</string>
+
+    <string name="btn_save">Simpan</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_logout">Keluar</string>
+</resources>
