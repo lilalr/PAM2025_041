@@ -13,7 +13,6 @@ fun PetaNavigasi() {
 
     NavHost(navController = navController, startDestination = DestinasiLogin.route) {
 
-        // LOGIN
         composable(DestinasiLogin.route) {
             HalamanLogin(
                 onLoginSuccess = { user ->
@@ -25,7 +24,6 @@ fun PetaNavigasi() {
             )
         }
 
-        // REGISTER
         composable(DestinasiRegister.route) {
             HalamanRegister(
                 onRegisterSuccess = {
@@ -39,7 +37,6 @@ fun PetaNavigasi() {
             )
         }
 
-        // HOME
         composable(
             route = DestinasiHome.routeWithArgs,
             arguments = listOf(
@@ -64,7 +61,6 @@ fun PetaNavigasi() {
             )
         }
 
-        // DETAIL TANAMAN
         composable(
             route = DestinasiDetail.routeWithArgs,
             arguments = listOf(navArgument("tanamanId") { type = NavType.IntType })
@@ -75,7 +71,6 @@ fun PetaNavigasi() {
             )
         }
 
-        // EDIT TANAMAN
         composable(
             route = DestinasiEdit.routeWithArgs,
             arguments = listOf(navArgument("tanamanId") { type = NavType.IntType })
